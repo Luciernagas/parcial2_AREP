@@ -13,19 +13,21 @@ public class Collatz {
         });
     }
 
-    private static Object formatoSecuencia(String numero) {
-        return "operation: collatzsequence" +
-                "input: " + numero  +
-                "output: " + getConjentura(Integer.parseInt(numero));
+    private static String formatoSecuencia(String numero) {
+        String resp =  "{ \"operation\" : \"collatzsequence\", " +
+                "\"input \": " + numero  +
+                "\"output\" : \"" + getConjentura(Integer.parseInt(numero)) + "\" }";
+        System.out.println(resp);
+        return resp;
     }
 
     private static int getConjentura(int numero){
-        int resultado = 0;
-        while (numero > 1){
-            if(numero % 2 == 0){
-                resultado = numero / 2;
+        int resultado = numero;
+        while (resultado > 1){
+            if(resultado % 2 == 0){
+                resultado = resultado/ 2;
             } else {
-                resultado = (3 * numero) + 1;
+                resultado = (3 * resultado) + 1;
             }
         }
         return resultado;
