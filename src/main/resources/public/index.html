@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial 2</title>
+</head>
+<body>
+<h1>Conjentura de Collatz</h1>
+<form>
+    <label for="input"></label>
+    <input id="input" name="input" type="text" placeholder="Ingresa el numero aqui :)" ><br>
+    <input id="buttonSubmit" type="button" value="submit" onclick="MandarNumero()">
+</form>
+<div id="respuesta"></div>
+
+<script>
+   function MandarNumero(){
+    let numero = document.getElementById("input");
+    const http = new XMLHttpRequest();
+    http.onload = function(){
+   document.getElementById("respuesta").innerHTML = this.responseText;
+   }
+   http.open("GET", "collatz?value=" + numero);
+   http.send;
+    }
+</script>
+</body>
+</html>
